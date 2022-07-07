@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "0aa34c51-ffc2-4e99-8fd9-c04eb0f07021",
+		"name": "Api Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11894083"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "apilaravel8.localhost/api/auth/login",
+					"host": [
+						"apilaravel8",
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "apilaravel8.localhost/api/users",
+					"host": [
+						"apilaravel8",
+						"localhost"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
