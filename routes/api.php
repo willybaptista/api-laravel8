@@ -21,6 +21,9 @@ Route::prefix('auth')->group(function () {
     Route::post('logout',   [AuthController::class, 'logout'])->name('logout');
     Route::post('refresh',  [AuthController::class, 'refresh'])->name('refresh');
     Route::post('me',       [AuthController::class, 'me'])->name('me');
+    Route::get('unauthenticated', function() {
+        return ['error' => 'Unauthenticated'];
+    })->name('login');
 });
 
 Route::prefix('users')->group(function () {
