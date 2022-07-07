@@ -16,9 +16,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function () {
+    Route::post('login',    [AuthController::class, 'login'])->name('login');
+    Route::post('logout',   [AuthController::class, 'logout'])->name('logout');
+    Route::post('refresh',  [AuthController::class, 'refresh'])->name('refresh');
+    Route::post('me',       [AuthController::class, 'me'])->name('me');
 });
 
-Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/users', [UserController::class, 'index']);
+Route::prefix('users')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/store', [UserController::class, 'store']);
+});

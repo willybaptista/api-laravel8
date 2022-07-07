@@ -27,7 +27,27 @@
 			"response": []
 		},
 		{
-			"name": "users",
+			"name": "store user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "apilaravel8.localhost/api/auth/login",
+					"host": [
+						"apilaravel8",
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list users",
 			"request": {
 				"method": "GET",
 				"header": [],

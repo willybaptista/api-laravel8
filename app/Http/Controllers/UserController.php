@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -20,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $user = User::all();
+
+        return response()->json($user);
     }
 
     /**
@@ -41,7 +44,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'nome, email e senha são obrigatórios'], 400);
+        }
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return response()->json($user, 201);
+
     }
 
     /**
